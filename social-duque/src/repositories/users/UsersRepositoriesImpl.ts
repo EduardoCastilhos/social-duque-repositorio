@@ -3,7 +3,7 @@ import { AppDataSource } from '../../data-source'
 import { IUsersRepository } from './IUsersRepositories'
 
 export class UsersRepository implements IUsersRepository{
-    
+        
     private repository = AppDataSource.getRepository(User)
 
     async create(user: User):Promise<User> {
@@ -19,6 +19,9 @@ export class UsersRepository implements IUsersRepository{
     }
     findByPhone(phone: string): Promise<User | null> {
         return this.repository.findOne({where:{phone}})
+    }
+    async findAll(): Promise<User[]> {
+        return await this.repository.find()
     }
     async update(id: string, data: Partial<User>): Promise<User> {
         const user = await this.findById(id)

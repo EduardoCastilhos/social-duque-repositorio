@@ -1,16 +1,13 @@
 import { IUsersRepository } from '../../repositories/users/IUsersRepositories'
 import { User } from '../../entities/user'
-
-interface IRequest {
-    name: string
-    email: string
-    password: string
-}
+import { CreateUserInput, createUserSchema } from '../../schemas/user-schema'
+import { hash } from 'bcryptjs'
+import { v4 as uuivd4 } from 'uuid'
 
 export class createUserUseCase {
     constructor(private usersRepository: IUsersRepository) {}
 
-    async execute({ name, email, password }: IRequest): Promise<User> {
+    async execute({ input:CreateUserInput){
         const existingUser = await this.usersRepository.findByEmail(email)
         if (existingUser) {
             throw new Error('Este usuário já existe')
