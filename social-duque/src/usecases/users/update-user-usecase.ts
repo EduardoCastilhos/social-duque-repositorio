@@ -12,7 +12,7 @@ const updateUserSchema = z.object({
 
 export type UpdateUserInput = z.infer<typeof updateUserSchema>
 
-export class updateUserUseCase{
+export class UpdateUserUseCase{
     
     constructor(private usersRepository: IUsersRepository){}
 
