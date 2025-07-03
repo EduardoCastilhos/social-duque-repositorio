@@ -21,5 +21,22 @@ export class createUserUseCase {
         if(existingPhone){
             throw new Error('Este telefone já está cadastrado')
         }
+
+        const hashedPassword = await hash(data.password, 10)
+
+        const user: User = {
+            id: uuivd4(),
+            name: data.name,
+            email: data.email,
+            password: hashedPassword,
+            phone: data.password,
+            created_at: new Date(),
+            posts: [],
+            comments: []
+        }
+
+        await this.usersRepository.create(user)
+
+        return user
     }
 }
