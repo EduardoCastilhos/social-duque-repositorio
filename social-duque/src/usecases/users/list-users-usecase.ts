@@ -5,9 +5,9 @@ export class listUsersUseCase{
 
     constructor(private usersRepository: IUsersRepository) {}
 
-    async execute():Promise<User[]>{
+    async execute():Promise<Omit<User, 'password'>[]>{
         const users = await this.usersRepository.findAll()
-        return users
+        return users.map(({password, ...user})=>user)
     }
 
 }
