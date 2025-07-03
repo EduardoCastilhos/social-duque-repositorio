@@ -5,7 +5,7 @@ interface IRequest{
     phone: string
 }
 
-export class findByPhoneUseCase {
+export class FindByPhoneUseCase {
 
     constructor(private usersRepository: IUsersRepository) {}
 

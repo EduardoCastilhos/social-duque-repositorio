@@ -4,7 +4,7 @@ import { CreateUserInput, createUserSchema } from '../../schemas/user-schema'
 import { hash } from 'bcryptjs'
 import { v4 as uuivd4 } from 'uuid'
 
-export class createUserUseCase {
+export class CreateUserUseCase {
     constructor(private usersRepository: IUsersRepository) {}
 
     async execute(input:CreateUserInput){

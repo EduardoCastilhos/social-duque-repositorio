@@ -19,7 +19,7 @@ export class UpdateUserController{
     ){
         try{
             const usecase = new updateUserUseCase(new UsersRepository)
-            const result = await usecase.execute(request.params.id)
+            const result = await usecase.execute(request.params.id, request.body)
             return reply.send(result)
         } catch (error:any) {
             return reply.status(400).send({error: error.message})
