@@ -1,7 +1,7 @@
 import { IUsersRepository } from '../../repositories/users/IUsersRepositories'
 import { User } from '../../entities/user'
 
-export class findByIdUseCase {
+export class FindByIdUseCase {
     
     constructor(private usersRepository: IUsersRepository) {}
 
