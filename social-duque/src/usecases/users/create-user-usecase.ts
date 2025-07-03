@@ -7,23 +7,19 @@ import { v4 as uuivd4 } from 'uuid'
 export class createUserUseCase {
     constructor(private usersRepository: IUsersRepository) {}
 
-    async execute({ input:CreateUserInput){
-        const existingUser = await this.usersRepository.findByEmail(email)
-        if (existingUser) {
-            throw new Error('Este usuário já existe')
+    async execute(input:CreateUserInput){
+        const data = createUserSchema.parse(input)
+
+        const existingEmail = await this.usersRepository.findByEmail(data.email)
+
+        if(existingEmail){
+            throw new Error('Este e-mail já foi cadastrado')
         }
 
-        const user = await this.usersRepository.create({
-            name,
-            email,
-            password,
-            id: '',
-            phone: '',
-            created_at: new Date(),
-            posts: [],
-            comments: []
-        })
+        const existingPhone = await this.usersRepository.findByPhone(data.phone)
 
-        return user
+        if(existingPhone){
+            throw new Error('Este telefone já está cadastrado')
+        }
     }
 }
