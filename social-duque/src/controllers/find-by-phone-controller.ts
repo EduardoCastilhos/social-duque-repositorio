@@ -2,7 +2,7 @@ import { UsersRepository } from '../repositories/users/UsersRepositoriesImpl'
 import { FindByPhoneUseCase } from '../usecases/users/find-by-phone-usecase'
 import fastify, { FastifyReply, FastifyRequest } from 'fastify'
 
-export class FindByIdController{
+export class FindByPhoneController{
     async handle(req:FastifyRequest<{Params:{phone:string}}>, reply: FastifyReply){
         try{
             const usecase = new FindByPhoneUseCase(new UsersRepository())

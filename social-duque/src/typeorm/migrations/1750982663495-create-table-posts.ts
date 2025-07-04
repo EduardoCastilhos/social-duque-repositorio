@@ -9,7 +9,7 @@ export class CreateTablePosts1750982663495 implements MigrationInterface {
                 {name: 'id', type: 'varchar', isPrimary:true},
                 {name: 'content', type: 'text', isNullable:false},
                 {name: 'authorId', type: 'varchar'},
-                {name: 'created_at', type: 'datetime', default:"'CURRENT_TIMESTAMP"}
+                {name: 'created_at', type: 'datetime', default:"CURRENT_TIMESTAMP"}
             ],
             foreignKeys: [
                 {

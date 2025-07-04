@@ -2,7 +2,7 @@ import { UsersRepository } from '../repositories/users/UsersRepositoriesImpl'
 import { FindByEmailUseCase } from '../usecases/users/find-by-email-usecase'
 import fastify, { FastifyReply, FastifyRequest } from 'fastify'
 
-export class FindByIdController{
+export class FindByEmailController{
     async handle(req:FastifyRequest<{Params:{email:string}}>, reply: FastifyReply){
         try{
             const usecase = new FindByEmailUseCase(new UsersRepository())

@@ -7,9 +7,9 @@ import { Comment } from './entities/comment'
 
 export const AppDataSource = new DataSource({
     type: 'sqlite',
-    database:'.env.DATABASE_FILE',
+    database: env.DATABASE_FILE,
     synchronize: false,
     logging: false,
     entities: [User, Post, Comment],
-    migrations: ['.src/typeorm/migrations/*.ts']
+    migrations: ['./src/typeorm/migrations/*.ts']
 })

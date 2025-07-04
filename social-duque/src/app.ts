@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import { AppDataSource } from './data-source'
 import fastify from 'fastify'
+import { usersRoutes } from './routes/user-routes'
 
 export async function startApp(){
     const app = fastify()
@@ -13,8 +14,6 @@ export async function startApp(){
         process.exit(1)
     })
 
-    //Registre as rotas e plugins aqui
-    //app.register(userRoutes)
-    
+    app.register(usersRoutes)
     return app
 }

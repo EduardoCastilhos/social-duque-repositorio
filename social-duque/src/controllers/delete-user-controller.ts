@@ -1,9 +1,9 @@
-import { FastifyRequest } from 'fastify'
+import { FastifyReply, FastifyRequest } from 'fastify'
 import { DeleteUserUseCase } from '../usecases/users/delete-user-usecase'
 import { UsersRepository } from '../repositories/users/UsersRepositoriesImpl'
 
 export class DeleteUserController{
-    async handle(request :FastifyRequest<{Params:{id:string}}>){
+    async handle(request :FastifyRequest<{Params:{id:string}}>, reply: FastifyReply){
         try{
             const usecase = new DeleteUserUseCase(new UsersRepository)
             const result = usecase.execute(request.params.id)

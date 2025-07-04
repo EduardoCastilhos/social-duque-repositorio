@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { UsersRepository } from '../repositories/users/UsersRepositoriesImpl'
-import { updateUserUseCase } from '../usecases/users/update-user-usecase'
+import { UpdateUserUseCase } from '../usecases/users/update-user-usecase'
 
 type UpdateUserRequest = {
     Params: {id:string}
@@ -18,7 +18,7 @@ export class UpdateUserController{
         reply: FastifyReply
     ){
         try{
-            const usecase = new updateUserUseCase(new UsersRepository)
+            const usecase = new UpdateUserUseCase(new UsersRepository)
             const result = await usecase.execute(request.params.id, request.body)
             return reply.send(result)
         } catch (error:any) {
