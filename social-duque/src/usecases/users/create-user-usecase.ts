@@ -29,7 +29,7 @@ export class CreateUserUseCase {
             name: data.name,
             email: data.email,
             password: hashedPassword,
-            phone: data.password,
+            phone: data.phone,
             created_at: new Date(),
             posts: [],
             comments: []

@@ -5,13 +5,14 @@ export class FindByEmailUseCase {
 
     constructor(private usersRepository: IUsersRepository) {}
 
-    async execute(email:string): Promise<User> {
+    async execute(email:string): Promise<Omit<User, 'password'>>{
         const user = await this.usersRepository.findByEmail(email)
 
         if(!user){
             throw new Error ('Usuário não encontrado')
         }
+        const{password, ...safeUser} = user
 
-        return user
+        return safeUser
     }
 }
